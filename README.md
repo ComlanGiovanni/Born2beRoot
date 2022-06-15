@@ -256,17 +256,40 @@ Now you can control your virtual machine from the host terminal.
 
 
 
-#### For Defense
+#### Command For Defense
+
+```
+su -
+```
+
+```
+sudo ufw status
+```
+
+```
+sudo service sshd status
+```
+
+```
+hostnamectl
+```
+
+```
+getent group sudo
+```
+
+```
 
 ```
 
 ```
- ```
 
 ```
- ```
 
 ```
+
+```
+
 #
 
 #
