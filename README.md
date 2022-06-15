@@ -347,11 +347,11 @@ cat /var/log/sudo/arv.log
 ```
 
 ```
-ufw status
-ufw allow 8080
-ufw status numbered
-ufw status delete 2
-ufw status delete 3
+sudo ufw status
+sudo ufw allow 8080
+sudo ufw status numbered
+sudo ufw status delete 2
+sudo ufw status delete 3
 
 or
 
@@ -360,7 +360,7 @@ sudo ufw deny 8080
 
 ```
 cat /etc/ssh/sshd_config
-service sshd status
+sudo service sshd status
 ssh gcomlan@localhost -p 4242
 ssh killua@localhost -p 4242
 ssh root@localhost -p 4242
@@ -369,6 +369,8 @@ ssh root@localhost -p 4242
 ```
 cat /usr/local/bin/monitoring.sh
 sudo crontab -u root -e
+or
+sudo crontab -l  
 
 */1 * * * * sleep 30s && /path/to/monitoring.sh
 ```
