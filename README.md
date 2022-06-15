@@ -4,11 +4,20 @@ root pass : Gcomlan#42Born
 user pass : Born2BeRoute#42
 Passe ; PassePartout#42
 
+
+# Comming soon
+```
+Install
+Partitionn Guide screen
+```
+# Link for iso
+```
+*Small Netinstaller - https://www.debian.org/CD/netinst/ |<-amd64
+```
 # Switch to root.
 ```
 su -
 ```
-
 # Upadate os
 ```
 apt-get update -y
@@ -17,6 +26,11 @@ apt-get upgrade -y
 # Installing git
 ```
 apt-get install git -y
+```
+
+# Insatll wget
+```
+sudo apt-get install wget
 ```
 # Installing Oh my zsh
 ```
@@ -74,6 +88,17 @@ Configuring sudo
 - After setting up your configuration files, you will have to change
 all the passwords of the accounts present on the virtual machine,
 including the root account.
+
+# Apply politique on root and 42login
+```
+sudo chage -M 30 intra_login42
+sudo chage -m 2 intra_login42
+sudo chage -W 7 intra_login42
+
+sudo chage -M 30 root
+sudo chage -m 2 root
+sudo chage -W 7 root
+```
  #### 3 : Configuring sudo.
  To set up a strong configuration for your sudo group, you have to comply with the
 following requirements:
@@ -93,7 +118,7 @@ Defaults     passwd_tries=3
 password occurs when using sudo.
 go to line 13 and add the line below.
 ```
-Defaults     badpass_message="Password is wrong, please try again!"
+Defaults     badpass_message="Do you think like you type ?"
 ```
 - Each action using sudo has to be archived, both inputs and outputs. The log file
 has to be saved in the /var/log/sudo/ folder.
@@ -169,14 +194,123 @@ Your script must always be able to display the following information:
 • The number of commands executed with the sudo program.
 
 #
+```
+
+cd /user/local/bin/
+
+git clone https://gist.github.com/5ff6404e27520c2ac01a662debff2329.git
+
+mv to monitoring.sh
+
+chmod +x /usr/local/bin/monitoring.sh
+```
+To run script every 10 minutes
+```
+crontab -u root -e
+```
+Add at end as follows: (*/10 means every 10 mins the script will show)
+```
+*/10 * * * * /usr/local/bin/monitoring.sh
+```
+- SSH & UFW
+A SSH service will be running on port 4242 only. For security reasons, it must not be
+possible to connect using SSH as root
+```
+apt install openssh-server
+```
+Changing default port (22) to 4242
+```
+vim /etc/ssh/sshd_config
+```
+Edit the file, change the line #Port22 to Port 4242.
+Go to line 15 and edit it.
+```
+Port 4242
+```
+It must not be possible to connect using SSH as root.
+change line 34.
+```
+PermitRootLogin no
+```
+Restart the SSH service.
+```
+service ssh restart
+```
+Install UFW (Uncomplicated Firewall)
+```
+apt-get install ufw
+```
+```
+ufw enable
+```
+Configure the rules
+```
+ufw allow ssh
+```
+```
+ufw allow 4242
+```
+Deleting UFW Rules By rule number.
+```
+ufw status numbered
+```
+![This is an image](https://blogger.googleusercontent.com/img/a/AVvXsEh-wXgFfnGxCw5CfzsvusVR0vmUAyhzvYcV4xYGW1w2m667uYhDCRzg-ntYwtoovGdYB7KQyYKXfk-WA8Cj-qXoVXHlvb5rO1K9XjFCCQqpX5ncMpP2fyIr2IbmbmLtybLU48kcujcICCyifWD8b-h58MNUvwQR49hNwkOeaof9SRjYrqHc3gLkbYEIeg)
+delete the rules number 1 and 2.
+```
+ufw delete 1
+```
+```
+ufw delete 2
+```
+- Connecting SSH server.
+![This is an image](https://blogger.googleusercontent.com/img/a/AVvXsEgRRTFZwRRR5jwgqLUpVHf1XPBmB0GPXzMZYdddmsCgAkgE5yIGQEuZDDSZCok8RBy3nF4Pb_0Og-rc2mdaT5dt7x1T-HsG6bavyxdqgC3PZ6lk2VIWWw2bo9nuiuJHehp73OgtjFNhFH66I1UBY3yH35kC4lzKHBppI6JwhkFjVR3mAh7SpKq5l3Og0A)
+
+
+--------------------------------------------------------------------------------
+
+You may not be able to connect to your VM via SSH with standard settings in
+VirtualBox. Theres a way to wix it!
+
+1) Turn off your VM ([sudo shutdown])
+2) Go to your VM settings in VirtualBox
+3) Network -> Adapter 1 -> Advanced -> Port forwarding
+4)Add new rule (little green button on right top side) and next parameters:
+
+**************************************************************************
+* Protocol       Host IP       Host Port       Guest IP       Guest Port *
+* TCP            127.0.0.1     4242            10.0.2.15      4242       *
+**************************************************************************
+6) In your host (physical) machine open Terminal and run
+[ssh <vmusername>@localhost -p 4242]
+
+Now you can control your virtual machine from the host terminal.
+
+
+
+
+#### For Defense
+
+```
+
+```
+ ```
+
+```
+ ```
+
+```
+#
+
+#
 
 #
 
 
-#
-
-#
-
-#
 
 
+# Link
+https://unix.stackexchange.com/questions/502540/why-does-drmvmw-host-log-vmwgfx-error-failed-to-send-host-log-message-sh
+
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=635473
+
+https://bugs.debian.org/cgi-bin/bugreport.cgi?att=0;bug=635473;msg=70
