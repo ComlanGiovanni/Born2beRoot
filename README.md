@@ -254,7 +254,7 @@ VirtualBox. Theres a way to wix it!
 Now you can control your virtual machine from the host terminal.
 ```
 
-
+#
 
 #### Command For Defense
 
@@ -272,6 +272,11 @@ sudo service sshd status
 
 ```
 hostnamectl
+```
+
+```
+head -n 2 /etc/os.relase
+/usr/sbin/aa-status
 ```
 
 ```
@@ -371,31 +376,6 @@ sudo crontab -u root -e
 ```
 
 ```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-#
-
-#
-
-#
-
-
-
 
 # Link
 https://unix.stackexchange.com/questions/502540/why-does-drmvmw-host-log-vmwgfx-error-failed-to-send-host-log-message-sh
