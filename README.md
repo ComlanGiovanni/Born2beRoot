@@ -279,6 +279,88 @@ getent group sudo
 ```
 
 ```
+getent group user42
+```
+
+```
+cut -d: -f1 /etc/passwd
+```
+
+```
+sudo adduser killua
+```
+
+```
+sudo groupadd evaluating
+```
+
+```
+sudo usermod -aG evaluating killa
+```
+
+```
+getent group evaluating
+```
+
+```
+groups
+```
+
+```
+chage -l killua
+```
+
+
+```
+sed -n 22,27p /etc/pam.d/common-password
+```
+
+
+```
+hostnamectl set-hostname
+```
+
+```
+sudo nano /etc/hosts
+```
+
+```
+sudo reboot
+```
+
+```
+lsblk
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
+
+```
 
 ```
 
