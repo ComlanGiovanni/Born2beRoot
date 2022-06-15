@@ -221,8 +221,7 @@ Deleting UFW Rules By rule number.
 ```
 ufw status numbered
 ```
-![This is an image](https://blogger.googleusercontent.com/img/a/AVvXsEh-wXgFfnGxCw5CfzsvusVR0vmUAyhzvYcV4xYGW1w2m667uYhDCRzg-ntYwtoovGdYB7KQyYKXfk-WA8Cj-qXoVXHlvb5rO1K9XjFCCQqpX5ncMpP2fyIr2IbmbmLtybLU48kcujcICCyifWD8b-h58MNUvwQR49hNwkOeaof9SRjYrqHc3gLkbYEIeg)
-delete the rules number 1 and 2.
+Delete the rules number 1 and 2.
 ```
 ufw delete 1
 ```
@@ -230,28 +229,30 @@ ufw delete 1
 ufw delete 2
 ```
 - Connecting SSH server.
-![This is an image](https://blogger.googleusercontent.com/img/a/AVvXsEgRRTFZwRRR5jwgqLUpVHf1XPBmB0GPXzMZYdddmsCgAkgE5yIGQEuZDDSZCok8RBy3nF4Pb_0Og-rc2mdaT5dt7x1T-HsG6bavyxdqgC3PZ6lk2VIWWw2bo9nuiuJHehp73OgtjFNhFH66I1UBY3yH35kC4lzKHBppI6JwhkFjVR3mAh7SpKq5l3Og0A)
-
 
 --------------------------------------------------------------------------------
 
-You may not be able to connect to your VM via SSH with standard settings in
+# You may not be able to connect to your VM via SSH with standard settings in
 VirtualBox. Theres a way to wix it!
 
+```
 1) Turn off your VM ([sudo shutdown])
 2) Go to your VM settings in VirtualBox
 3) Network -> Adapter 1 -> Advanced -> Port forwarding
 4)Add new rule (little green button on right top side) and next parameters:
-
+```
+```
 **************************************************************************
 * Protocol       Host IP       Host Port       Guest IP       Guest Port *
 * TCP            127.0.0.1     4242            10.0.2.15      4242       *
 **************************************************************************
+```
+```
 6) In your host (physical) machine open Terminal and run
 [ssh <vmusername>@localhost -p 4242]
 
 Now you can control your virtual machine from the host terminal.
-
+```
 
 
 
