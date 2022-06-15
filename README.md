@@ -333,23 +333,39 @@ lsblk
 ```
 
 ```
-
+usermod -aG root killua
 ```
 
 ```
-
+cat /etc/sudoers
+cat /var/log/sudo/arv.log
 ```
 
 ```
+ufw status
+ufw allow 8080
+ufw status numbered
+ufw status delete 2
+ufw status delete 3
 
+or
+
+sudo ufw deny 8080
 ```
 
 ```
-
+cat /etc/ssh/sshd_config
+service sshd status
+ssh gcomlan@localhost -p 4242
+ssh killua@localhost -p 4242
+ssh root@localhost -p 4242
 ```
 
 ```
+cat /usr/local/bin/monitoring.sh
+sudo crontab -u root -e
 
+*/1 * * * * sleep 30s && /path/to/monitoring.sh
 ```
 
 ```
