@@ -377,6 +377,23 @@ sudo crontab -u root -e
 
 ```
 
+#
+
+# Signature
+```
+• Pour Windows : %HOMEDRIVE%%HOMEPATH%\VirtualBox VMs\
+• Pour Linux : ~/VirtualBox VMs/
+• Pour Mac M1 : ~/Library/Containers/com.utmapp.UTM/Data/Documents/
+• Pour MacOS : ~/VirtualBox VMs/
+```
+
+``
+Pour Windows : certUtil -hashfile centos_serv.vdi sha1
+• Pour Linux : sha1sum centos_serv.vdi
+• Pour Mac M1 : shasum Centos.utm/Images/disk-0.qcow2
+• Pour MacOS : shasum centos_serv.vdi
+```
+
 # Link
 https://unix.stackexchange.com/questions/502540/why-does-drmvmw-host-log-vmwgfx-error-failed-to-send-host-log-message-sh
 
